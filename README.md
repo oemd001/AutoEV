@@ -23,7 +23,7 @@ If <code> xcode-select --install </code> doesn't resolve your issue, run <code> 
 If all fails, let Kenneth know about your issue!
 
 (Windows?)
-If CMD returns <code> 'git' is not recognized as an internal or external command </code>, there's a high chance that either GitHub wasn't installed correctly previously or wasn't installed at all. Please visit <a href="https://git-scm.com/download/win rel="nofollow"> this link </a> to download git on your Windows workstation. 
+If CMD returns <code> 'git' is not recognized as an internal or external command </code>, there's a high chance that either GitHub wasn't installed correctly previously or wasn't installed at all. Please visit <a href="https://git-scm.com/download/win" rel="nofollow">this link </a> to download git on your Windows workstation. 
 
 (Linux [Ubuntu?])
 <code> sudo apt update </code> and <code> sudo apt install git </code> should resolve your issue. If Ubuntu doesn't recognize 'git' being a downloadable package, check your <code> sources.list </code> file under <code> /etc/apt/ </code>. Make sure all the correct links are there. If you need them again, here's a sources.list <a href="https://repogen.simplylinux.ch/" rel="nofollow">generator </a>.
