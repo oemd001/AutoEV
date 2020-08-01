@@ -1,7 +1,6 @@
+A healthy amount of 🍕 and 🥤 increases productivity!
 # Hello there!
 Welcome to Biola's Autonomous Electric Vehicle's GitHub Repo!
-
-A healthy amount of 🍕 and 🥤 increases productivity!
 
 # Note to Devs
 1. Prior to 'commiting' your program, please ensure that your program works. If your program requires additional attention, please document that on your commit. 
