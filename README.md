@@ -14,6 +14,8 @@ Welcome to Biola's Autonomous Electric Vehicle's GitHub Repo!
 5. Type <code> git commit -m "change message goes here" </code> to document your changes. 
 6. Finally, type <code> git push </code> to push it on GitHub. 
 
+Note: <em> If you just downloaded this repo and is pushing/pulling for the first time, you might need to type <code> git pull origin master </code> to pull and <code> git push -u origin master </code> for it to work. After that, you won't need to type in the <code> origin master</code> portion. </em>
+
 # Troubleshooting.
 (Mac?)
 If you're having problems comitting to GitHub via Mac, make sure to run <code> xcode-select --install </code>. Xcode <em> may </em> break after an update. 
@@ -28,8 +30,6 @@ If CMD returns <code> 'git' is not recognized as an internal or external command
 
 # How can I be a part of this project?
 1. Sweet! Email Kenneth <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a> and we'll let you know how you can contribute towards this project. 
-
-Note: <em> If you just downloaded this repo and is pushing/pulling for the first time, you might need to type <code> git pull origin master </code> to pull and <code> git push -u origin master </code> for it to work. After that, you won't need to type in the <code> origin master</code> portion. </em>
 
 # Questions? Want to learn more?
 Should you have any questions regarding this project, please don't hesitate to conact Kenneth at <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a>
