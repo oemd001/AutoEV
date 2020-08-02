@@ -29,8 +29,8 @@ If CMD returns <code> 'git' is not recognized as an internal or external command
 <code> sudo apt update </code> and <code> sudo apt install git </code> should resolve your issue. If Ubuntu doesn't recognize 'git' being a downloadable package, check your <code> sources.list </code> file under <code> /etc/apt/ </code>. Make sure all the correct links are there. If you need them again, here's a sources.list <a href="https://repogen.simplylinux.ch/" rel="nofollow">generator </a>.
 
 # How can I be a part of this project?
-1. Sweet! Email Kenneth <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a> and we'll let you know how you can contribute towards this project. 
+1. Sweet! Email Kenneth at <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a> and we'll let you know how you can contribute towards this project. 
 
 # Questions? Want to learn more?
-Should you have any questions regarding this project, please don't hesitate to conact Kenneth at <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a>
+Should you have any questions regarding this project, please don't hesitate to contact Kenneth at <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a>
 
