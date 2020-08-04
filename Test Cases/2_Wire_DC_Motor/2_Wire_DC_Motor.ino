@@ -1,8 +1,8 @@
 /*  README FIRST!
  *  Prior to running this program, you must have the following:
  *  2x PN2222 Transistor
- *  1x 1N4001 diode
- *  1x 270 Ω Resistor
+ *  2x 1N4001 diode
+ *  2x 270 Ω Resistor
  *  Without these materials, the DC motor will not work when plugged in to it's designated pin. 
  *  HOWEVER, it will run via 5V DC. 
  */
