@@ -46,19 +46,24 @@ void setup() {
 }
 
 void loop() {
+  /* Here, the code should include DC motor constantly running
+   * UNTIL one of the 'if' conditions are met. 
+   */
+
+
+  
   //back facing UltraSonic sensor loop
-  //digitalWrite(ledPin, LOW);
   digitalWrite(BACK_TRIG, HIGH);
   delay(50);
   digitalWrite(BACK_TRIG, LOW);
   bduration = pulseIn(BACK_ECHO, HIGH);
   bdistance = (bduration/2)/29.1;
   if (bdistance <= 10) {
-    //digitalWrite(ledPin, HIGH);
     delay(50);
     Serial.println("Obstacle detected @ back ");
     Serial.println(bdistance);
     Serial.println("cm");
+    // Here, if bdistance is less than 10, the motor should run forward @ 1/4 speed for 5s and exit loop. 
   }
 
   //forward facing UltraSonic sensor loop
@@ -68,11 +73,28 @@ void loop() {
   fduration = pulseIn(FRONT_ECHO, HIGH);
   fdistance = (fduration/2)/29.1;
   if (fdistance <= 10) {
-    //digitalWrite(ledPin, HIGH);
     delay(50);
     Serial.println("Obstacle detected @ front ");
     Serial.println(fdistance);
     Serial.println("cm");
+    //Here, if the obstacle is detected at the front, the entire car should stop for delay(100)
+
+    while (fdistance <= 15) {
+      digitalWrite(FRONT_TRIG, HIGH);
+      delay(50);
+      digitalWrite(FRONT_TRIG, LOW);
+      fduration = pulseIn(FRONT_ECHO, HIGH);
+      fdistance = (fduration/2)/29.1;
+      //Serial.println is optional here. 
+      Serial.println("reversing... ");
+      delay(100);
+      Serial.print(fdistance);
+      /* Given that the obstacle is detected at the front, the car should reverse at 1/4 speed. for 1.5s
+       * The car must then first turn clockwise for 3s. If fdistance is still <= 15, it will revert itself to origin by turning counterclockwise for 3s.
+       * The car will then turn counterclockwise for 3s, or when fdistance is no longer <= 15–whichever comes first. 
+       * necessary logic: while loop
+       */
+    }
   }
 
   //Left facing Ultrasonic sensor loop
@@ -82,11 +104,17 @@ void loop() {
   lduration = pulseIn(LEFT_ECHO, HIGH);
   ldistance = (lduration/2)/29.1;
   if (ldistance <= 10) {
-    //digitalWrite(ledPin, HIGH);
     delay(50);
     Serial.println("Obstacle detected @ left ");
     Serial.println(ldistance);
     Serial.println("cm");
+    /* 
+     * If this condition is true, entire car should delay(100);
+     * The car will turn counterclockwise until either fdistance is not <= 10 and rdistance is not <=10
+     * OR the motor has spun it's wheels for 10 seconds at 1/4 power. (right motor HIGH, left motor -HIGH). (counterclockwise)
+     * If latter condition continues, fdistance and ldistance must sense an object. The condition must stop when fdistance no longer senses an object. 
+     * Necessary logic: while loop
+     */
   }
 
   //Right facing Ultrasonic sensor loop
@@ -96,11 +124,16 @@ void loop() {
   rduration = pulseIn(RIGHT_ECHO, HIGH);
   rdistance = (rduration/2)/29.1;
   if (rdistance <= 10) {
-    //digitalWrite(ledPin, HIGH);
     delay(50);
     Serial.println("Obstacle detected @ right ");
     Serial.println(rdistance);
     Serial.println("cm");
+
+    /*
+     * Similar logic to left facing ultrasonic sensor loop. 
+     * As opposed to being counterclockwise, it is clockwise. (right motor -HIGH, left motor HIGH)
+     * Necessary logic: while loop
+     */
   }
   
   
