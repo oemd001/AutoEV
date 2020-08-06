@@ -10,6 +10,9 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     private var captureSession: AVCaptureSession = AVCaptureSession()
     
     private let videoDataOutput = AVCaptureVideoDataOutput()
@@ -35,12 +38,33 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func captureOutput(
-        _ output: AVCaptureOutput,
-        didOutput sampleBuffer: CMSampleBuffer,
-        from connection: AVCaptureConnection) {
-        // here we can process the frame
-        print("did receive frame")
+        _ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,from connection: AVCaptureConnection) {
+        guard let  imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
+        CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags.readOnly)
+        
+        let baseAddress = CVPixelBufferGetBaseAddress(imageBuffer)
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
+        let width = CVPixelBufferGetWidth(imageBuffer)
+        let height = CVPixelBufferGetHeight(imageBuffer)
+       
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        var bitmapInfo: UInt32 = CGBitmapInfo.byteOrder32Little.rawValue
+        bitmapInfo |= CGImageAlphaInfo.premultipliedFirst.rawValue & CGBitmapInfo.alphaInfoMask.rawValue
+        
+        let context = CGContext(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+        
+        guard let quartzImage = context?.makeImage() else { return }
+        CVPixelBufferUnlockBaseAddress(imageBuffer, CVPixelBufferLockFlags.readOnly)
+
+        let image = UIImage(cgImage: quartzImage)
+        let imageWithLaneOverlay = LaneDetectorBridge().detectLane(in: image)
+        DispatchQueue.main.async {
+            self.imageView.image = imageWithLaneOverlay
+        }
     }
+    
     
     private func getFrames() {
         videoDataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
@@ -51,5 +75,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             connection.isVideoOrientationSupported else { return }
         connection.videoOrientation = .portrait
     }
+    
+    
 }
 

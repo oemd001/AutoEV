@@ -13,7 +13,25 @@
 		9F111A6124DBD91200DEC237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F111A5F24DBD91200DEC237 /* Main.storyboard */; };
 		9F111A6324DBD91200DEC237 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F111A6224DBD91200DEC237 /* Assets.xcassets */; };
 		9F111A6624DBD91200DEC237 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F111A6424DBD91200DEC237 /* LaunchScreen.storyboard */; };
+		9F111A7B24DBEAA400DEC237 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F111A7924DBEA9400DEC237 /* opencv2.framework */; };
+		9F111A7C24DBEAA400DEC237 /* opencv2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F111A7924DBEA9400DEC237 /* opencv2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9F111A7F24DBEAC000DEC237 /* LaneDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F111A7D24DBEAC000DEC237 /* LaneDetector.cpp */; };
+		9F111A8424DBEC0000DEC237 /* LaneDetectorBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F111A8324DBEC0000DEC237 /* LaneDetectorBridge.mm */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9F111A7124DBE35A00DEC237 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9F111A7C24DBEAA400DEC237 /* opencv2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9F111A5624DBD91200DEC237 /* LaneDetectionSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaneDetectionSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +42,12 @@
 		9F111A6224DBD91200DEC237 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F111A6524DBD91200DEC237 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F111A6724DBD91300DEC237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F111A7224DBE3D500DEC237 /* LaneDetectionSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LaneDetectionSample-Bridging-Header.h"; sourceTree = "<group>"; };
+		9F111A7924DBEA9400DEC237 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../../Downloads/opencv2.framework; sourceTree = "<group>"; };
+		9F111A7D24DBEAC000DEC237 /* LaneDetector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LaneDetector.cpp; sourceTree = "<group>"; };
+		9F111A7E24DBEAC000DEC237 /* LaneDetector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LaneDetector.hpp; sourceTree = "<group>"; };
+		9F111A8024DBEB2000DEC237 /* LaneDetectorBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaneDetectorBridge.h; sourceTree = "<group>"; };
+		9F111A8324DBEC0000DEC237 /* LaneDetectorBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LaneDetectorBridge.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F111A7B24DBEAA400DEC237 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +65,12 @@
 		9F111A4D24DBD91200DEC237 = {
 			isa = PBXGroup;
 			children = (
+				9F111A7224DBE3D500DEC237 /* LaneDetectionSample-Bridging-Header.h */,
+				9F111A7D24DBEAC000DEC237 /* LaneDetector.cpp */,
+				9F111A8024DBEB2000DEC237 /* LaneDetectorBridge.h */,
+				9F111A7E24DBEAC000DEC237 /* LaneDetector.hpp */,
+				9F111A8324DBEC0000DEC237 /* LaneDetectorBridge.mm */,
+				9F111A7924DBEA9400DEC237 /* opencv2.framework */,
 				9F111A5824DBD91200DEC237 /* LaneDetectionSample */,
 				9F111A5724DBD91200DEC237 /* Products */,
 			);
@@ -77,6 +108,7 @@
 				9F111A5224DBD91200DEC237 /* Sources */,
 				9F111A5324DBD91200DEC237 /* Frameworks */,
 				9F111A5424DBD91200DEC237 /* Resources */,
+				9F111A7124DBE35A00DEC237 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -98,6 +130,7 @@
 				TargetAttributes = {
 					9F111A5524DBD91200DEC237 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
@@ -139,7 +172,9 @@
 			files = (
 				9F111A5E24DBD91200DEC237 /* ViewController.swift in Sources */,
 				9F111A5A24DBD91200DEC237 /* AppDelegate.swift in Sources */,
+				9F111A8424DBEC0000DEC237 /* LaneDetectorBridge.mm in Sources */,
 				9F111A5C24DBD91200DEC237 /* SceneDelegate.swift in Sources */,
+				9F111A7F24DBEAC000DEC237 /* LaneDetector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,8 +318,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QA23VNFTXA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LaneDetectionSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -293,8 +333,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AutoEV.LaneDetectionSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LaneDetectionSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,8 +344,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QA23VNFTXA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LaneDetectionSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,8 +359,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AutoEV.LaneDetectionSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LaneDetectionSample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
