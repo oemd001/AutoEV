@@ -16,7 +16,7 @@ Welcome to Biola's Autonomous Electric Vehicle's GitHub Repo!
 
 Note: <em> If you just downloaded this repo and is pushing/pulling for the first time, you might need to type <code> git pull origin master </code> to pull and <code> git push -u origin master </code> for it to work. After that, you won't need to type in the <code> origin master</code> portion. </em>
 
-# Troubleshooting.
+# GitHub Troubleshooting.
 (Mac?)
 If you're having problems comitting to GitHub via Mac, make sure to run <code> xcode-select --install </code>. Xcode <em> may </em> break after an update. 
 If <code> xcode-select --install </code> doesn't resolve your issue, run <code> sudo xcode-select --reset </code>. That should resolve the issue. 
@@ -27,6 +27,13 @@ If CMD returns <code> 'git' is not recognized as an internal or external command
 
 (Linux [Ubuntu?])
 <code> sudo apt update </code> and <code> sudo apt install git </code> should resolve your issue. If Ubuntu doesn't recognize 'git' being a downloadable package, check your <code> sources.list </code> file under <code> /etc/apt/ </code>. Make sure all the correct links are there. If you need them again, here's a sources.list <a href="https://repogen.simplylinux.ch/" rel="nofollow">generator </a>.
+
+# Test Cases, running in to issues?
+(Arduino)
+Check the pin connections. Sometimes there might be an issue with that which prevents the program from running. 
+
+(iOS?)
+Is your device running iOS 13 or higher? Unfortunately, <code> UIViewController </code> will not run on devices lower than iOS 13. 
 
 # How can I be a part of this project?
 1. Sweet! Email Kenneth at <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a> and we'll let you know how you can contribute towards this project. 
