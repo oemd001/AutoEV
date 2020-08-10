@@ -1,11 +1,3 @@
-//
-//  main.cpp
-//  LaneDetector
-//
-//  Created by Jan Halozan on 16/05/2019.
-//  Copyright © 2019 JanHalozan. All rights reserved.
-//
-
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
