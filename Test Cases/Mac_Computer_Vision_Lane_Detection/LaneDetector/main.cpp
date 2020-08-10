@@ -119,7 +119,7 @@ int main(int argc, char** argv)
 //    const int calibImages = 1; //Number of calib images
 //    auto calibrationData = calibrateCameraWithCheckerboard(calibFolder, calibImages);
     
-    const String filename = "/Users/kenneth/Desktop/AutoEV/Test Cases/Mac_Computer_Vision_Lane_Detection/ride.mov";
+    const String filename = "/Users/kenneth/Desktop/AutoEV/Test Cases/Mac_Computer_Vision_Lane_Detection/test_video.mov";
     VideoCapture cap(filename);
     
     if (!cap.isOpened())
