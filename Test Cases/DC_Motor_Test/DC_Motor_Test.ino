@@ -24,20 +24,20 @@ using arduino so we are using higest
 value to driver the motor  */
 
 //Clockwise for 3 secs
-delay(3000) ;     
+delay(3000);     
 
 //For brake
 digitalWrite(in_1,HIGH) ;
 digitalWrite(in_2,HIGH) ;
-delay(1000) ;
+delay(1000);
 
 //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
 digitalWrite(in_1,LOW) ;
 digitalWrite(in_2,HIGH) ;
-delay(3000) ;
+delay(3000);
 
 //For brake
 digitalWrite(in_1,HIGH) ;
 digitalWrite(in_2,HIGH) ;
-delay(1000) ;
+delay(1000);
  }

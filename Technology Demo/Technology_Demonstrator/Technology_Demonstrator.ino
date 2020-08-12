@@ -43,12 +43,16 @@ void setup() {
   pinMode(RIGHT_TRIG, OUTPUT);
   pinMode(LEFT_ECHO, INPUT);
   pinMode(LEFT_TRIG, OUTPUT);
+  pinMode(LEFT_MOTOR, OUTPUT);
+  pinMode(RIGHT_MOTOR, OUTPUT);
 }
 
 void loop() {
   /* Here, the code should include DC motor constantly running
    * UNTIL one of the 'if' conditions are met. 
    */
+   digitalWrite(LEFT_MOTOR, HIGH);
+   digitalWrite(RIGHT_MOTOR, 
 
 
   
