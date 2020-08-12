@@ -1,6 +1,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
+#include "ofxGui.h"
 #include <iostream>
 #include <string>
 
@@ -132,10 +133,6 @@ int main(int argc, char** argv)
     Point2f srcVertices[4];
     
     //Define points that are used for generating bird's eye view. This was done by trial and error. Best to prepare sliders and configure for each use case.
-    //    srcVertices[0] = Point(790, 605); //These were another test.
-    //    srcVertices[1] = Point(900, 605);
-    //    srcVertices[2] = Point(1760, 1030);
-    //    srcVertices[3] = Point(150, 1030);
     
     srcVertices[0] = Point(700, 605);
     srcVertices[1] = Point(890, 605);

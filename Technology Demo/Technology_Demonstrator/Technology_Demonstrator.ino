@@ -52,7 +52,7 @@ void loop() {
    * UNTIL one of the 'if' conditions are met. 
    */
    digitalWrite(LEFT_MOTOR, HIGH);
-   digitalWrite(RIGHT_MOTOR, 
+   digitalWrite(RIGHT_MOTOR, HIGH);
 
 
   
