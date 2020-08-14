@@ -1,7 +1,6 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
-#include "ofxGui.h"
 #include <iostream>
 #include <string>
 
@@ -37,6 +36,7 @@ tuple<Mat, Mat, vector<Mat>, vector<Mat>> calibrateCameraWithCheckerboard(String
             cout << "Could not find corners for image." << files[i];
         }
         
+        //cornerSubPix(gray, corners, Size(5, 5), Size(-1, -1), TermCriteria(TermCriteria::EPS | TermCriteria::MAX_ITER, 30, 0.1));
         cornerSubPix(gray, corners, Size(5, 5), Size(-1, -1), TermCriteria(TermCriteria::EPS | TermCriteria::MAX_ITER, 30, 0.1));
         drawChessboardCorners(gray, boardSize, corners, found);
         
@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 //    const int calibImages = 1; //Number of calib images
 //    auto calibrationData = calibrateCameraWithCheckerboard(calibFolder, calibImages);
     
-    const String filename = "/Users/kenneth/Desktop/AutoEV/Test Cases/Mac_Computer_Vision_Lane_Detection/test_video.mov";
+    const String filename = "/Users/kenneth/Desktop/AutoEV/Test Cases/Mac_Computer_Vision_Lane_Detection/test_video.MOV";
     VideoCapture cap(filename);
     
     if (!cap.isOpened())
@@ -134,20 +134,29 @@ int main(int argc, char** argv)
     
     //Define points that are used for generating bird's eye view. This was done by trial and error. Best to prepare sliders and configure for each use case.
     
-    srcVertices[0] = Point(700, 605);
-    srcVertices[1] = Point(890, 605);
-    srcVertices[2] = Point(1760, 1030);
-    srcVertices[3] = Point(20, 1030);
+    srcVertices[0] = Point(700, 605); //Top, Blue
+    //srcVertices[0] = Point(500, 605);
+    srcVertices[1] = Point(890, 605); //Mid, Blue
+    //srcVertices[1] = Point(890, 605);
+    srcVertices[2] = Point(1760, 1030); //Lower Mid, Blue
+    //srcVertices[2] = Point(1760, 1030);
+    srcVertices[3] = Point(20, 1030); //Bottom, Blue
+    //srcVertices[3] = Point(10, 1030);
     
     //Destination vertices. Output is 640 by 480px
     Point2f dstVertices[4];
-    dstVertices[0] = Point(0, 0);
+    dstVertices[0] = Point(0, 0); //Intersection point. Don't screw this one up
+    //dstVertices[0] = Point(0, 10);
+    //dstVertices[1] = Point(640, 0); //Shifts red
     dstVertices[1] = Point(640, 0);
     dstVertices[2] = Point(640, 480);
+    //dstVertices[2] = Point(640, 800);
+    //dstVertices[3] = Point(0, 480);
     dstVertices[3] = Point(0, 480);
     
     //Prepare matrix for transform and get the warped image
     Mat perspectiveMatrix = getPerspectiveTransform(srcVertices, dstVertices);
+    // Mat dst(480, 640, CV_8UC3);
     Mat dst(480, 640, CV_8UC3); //Destination for warped image
     
     //For transforming back into original image space
@@ -199,6 +208,14 @@ int main(int argc, char** argv)
         
         
         //Get points for left sliding window. Optimize by using a histogram for the starting X value
+        Mat hist;
+        int histSize = 900;
+        // float range[] = { 0, 256 };
+        float range[] = { 0, 300 }; //the upper boundary is exclusive
+        const float* histRange = { range };
+        calcHist(&processed, 1, 0, Mat(), hist, 1, &histSize, &histRange, true);
+
+        
         vector<Point2f> pts = slidingWindow(processed, Rect(0, 420, 120, 60));
         vector<Point> allPts; //Used for the end polygon at the end.
         
