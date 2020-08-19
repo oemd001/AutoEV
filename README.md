@@ -32,8 +32,17 @@ If CMD returns <code> 'git' is not recognized as an internal or external command
 (Arduino)
 Check the pin connections. Sometimes there might be an issue with that which prevents the program from running. 
 
-(iOS?)
-Is your device running iOS 13 or higher? Unfortunately, <code> UIViewController </code> will not run on devices lower than iOS 13. 
+(Python, OpenCV?)
+Install the following on the target linux machine: 
+<code>
+sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
+sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+sudo apt-get install libxvidcore-dev libx264-dev
+sudo apt-get install libgtk2.0-dev libgtk-3-dev
+sudo apt-get install libatlas-base-dev gfortran
+</code>
+These are necessary dependancies for Python OpenCV. 
+Finally, run <code> pip3 install opencv-python==3.4.6.27 </code>. There seems to be an issue with the latest version of OpenCV on Linux systems. 
 
 # How can I be a part of this project?
 1. Sweet! Email Kenneth at <a href="mailto:kenneth.chen@biola.edu">kenneth.chen@biola.edu</a> and we'll let you know how you can contribute towards this project. 
