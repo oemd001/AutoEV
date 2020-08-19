@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread("kok.jpeg")
+img = cv2.imread("image.jpeg")
 # Video input? Uncomment the line below. Comment line above.
 # vid = cv2.VideoCapture("filename.filetype")
 
@@ -16,8 +16,8 @@ lowerbody_data = cv2.CascadeClassifier("haarcascade_lowerbody.xml")
 upperbody_data = cv2.CascadeClassifier("haarcascade_upperbody.xml")
 
 # Setting minimum body size
-full_detect = fullbody_data.detectMultiScale(img_gray, minSize = (2, 5)) #minSize = (2, 5)
-lowerbody_detect = lowerbody_data.detectMultiScale(img_gray, minSize = (2, 5))
+full_detect = fullbody_data.detectMultiScale(img_gray, minSize = (10, 20)) #minSize = (2, 5)
+lowerbody_detect = lowerbody_data.detectMultiScale(img_gray, minSize = (5, 10))
 upperbody_detect = upperbody_data.detectMultiScale(img_gray, minSize = (2, 5))
 
 count_full = len(full_detect)
