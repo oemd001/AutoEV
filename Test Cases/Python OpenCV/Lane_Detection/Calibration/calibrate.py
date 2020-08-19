@@ -1,12 +1,16 @@
+# If this program doesn't work, you'll need to install the following dependencies:
+# pip3 install pandas
+# pip3 install opencv-python==3.4.6.27
+# opencv will need more things. Please look at the github and copy paste to terminal. 
 import numpy as np
-import pandas as pd
-import cv2
+import pandas as pd 
+import cv2 
 import os
 import glob
 import matplotlib.pyplot as plt
 import pickle
 
-%matplotlib inline
+#%matplotlib inline
 
 def undistort_img():
     # Prepare object points 0,0,0 ... 8,5,0
@@ -18,7 +22,7 @@ def undistort_img():
     imgpoints = []
 
     # Get directory for all calibration images
-    images = glob.glob('camera_cal/*.jpg')
+    images = glob.glob('Calibrate_Files/*.jpg')
 
     for indx, fname in enumerate(images):
         img = cv2.imread(fname)
@@ -38,24 +42,24 @@ def undistort_img():
     dst = cv2.undistort(img, mtx, dist, None, mtx)
     # Save camera calibration for later use
     dist_pickle = {}
-    dist_pickle['mtx'] = mtx
-    dist_pickle['dist'] = dist
-    pickle.dump( dist_pickle, open('camera_cal/cal_pickle.p', 'wb') )
+    dist_pickle["mtx"] = mtx
+    dist_pickle["dist"] = dist
+    pickle.dump( dist_pickle, open("Calibrate_Files/cal_pickle.p", "wb") )
 
-def undistort(img, cal_dir='camera_cal/cal_pickle.p'):
+def undistort(img, cal_dir="Calibrate_Files/cal_pickle.p"):
     #cv2.imwrite('camera_cal/test_cal.jpg', dst)
     with open(cal_dir, mode='rb') as f:
         file = pickle.load(f)
-    mtx = file['mtx']
-    dist = file['dist']
+    mtx = file["mtx"]
+    dist = file["dist"]
     dst = cv2.undistort(img, mtx, dist, None, mtx)
     
     return dst
 
 undistort_img()
 
-# Checkerboard picture 
-img = cv2.imread('camera_cal/calibration1.jpg')
+
+img = cv2.imread('Calibrate_Files/calibration1.jpg')
 dst = undistort(img)
 
 # Visualize undistortion
