@@ -117,16 +117,18 @@ def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
 def linedetect(img):
     return hough_lines(img, 1, np.pi/180, 10, 20, 100)
 
+def overlayImage(setInput):
+    image = list(setInput)
+    return cv.addWeighted(image[0], 1, image[1], 0.8, 0)
     
-
-        
     
-
+    
 filterPlaceholder = list(map(filterImage, imgList))
 interestRegion = list(map(regionofInterest, filterPlaceholder))
 cannyImage = list(map(canny, interestRegion))
 houghImage = list(map(linedetect, cannyImage))
-displayImage(houghImage)
+finalImage = list(map(overlayImage, zip(houghImage, imgList)))
+displayImage(finalImage)
 
 
 
