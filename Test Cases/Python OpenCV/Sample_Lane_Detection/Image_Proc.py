@@ -43,6 +43,24 @@ def filterImage(image):
     maskResult = cv.bitwise_and(image, image, mask = mask)
     return maskResult
 
+# displays region of interest in said image. 
+def regionofInterest(image):
+    x = int(image.shape[1])
+    y = int(image.shape[0])
+    shape = np.array([[int(0), int(y)], [int(x), int(y)], [int(0.55*x), int(0.6*y)], [int(0.45*x), int(0.6*y)]])
+    mask = np.zeros_like(image)
+    if (len(image.shape) > 2):
+        channelCount = image.shape[2]
+        ignoreMaskColor = (255,) * channelCount
+    else:
+        ignoreMaskColor = 255 * channelCount
+    cv.fillPoly(mask, np.int32([shape]), ignoreMaskColor)
+    result = cv.bitwise_and(image, mask)
+    return result
+    
+        
+    
+
 # displayImage(imgList)
-filterPlaceholder = list(map(filterImage, imgList))
-displayImage(filterPlaceholder)
+# filterPlaceholder = list(map(filterImage, imgList))
+# interestRegion = list(map(regionofInterest, imgList))
