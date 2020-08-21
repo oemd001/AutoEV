@@ -11,6 +11,7 @@ import os
 # If you only have one image, uncomment this code. It's better to have multiple to have better results from the ML
 # img = cv.imread("image.jpg")
 # img = cv.cvtColor(img, cv.COLOR_RGB2BGR)
+# img = cv.cvtColor(img, cv.COLOR_RGB2HLS) # <-- HLS is recommended. (Provided that you are using single images for ML)
 
 # Adding the list of images to imgFiles via the append method. 
 imgDir = "Test_Images/"
@@ -42,4 +43,6 @@ def filterImage(image):
     maskResult = cv.bitwise_and(image, image, mask = mask)
     return maskResult
 
-displayImage(imgList)
+# displayImage(imgList)
+filterPlaceholder = list(map(filterImage, imgList))
+displayImage(filterPlaceholder)
