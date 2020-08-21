@@ -8,11 +8,6 @@ import numpy as np
 import sys
 import os
 
-# If you only have one image, uncomment this code. It's better to have multiple to have better results from the ML
-# img = cv.imread("image.jpg")
-# img = cv.cvtColor(img, cv.COLOR_RGB2BGR)
-# img = cv.cvtColor(img, cv.COLOR_RGB2HLS) # <-- HLS is recommended. (Provided that you are using single images for ML)
-
 # Adding the list of images to imgFiles via the append method. 
 imgDir = "Test_Images/"
 imgFiles = os.listdir(imgDir)
