@@ -121,12 +121,10 @@ def overlayImage(setInput):
     image = list(setInput)
     return cv.addWeighted(image[0], 1, image[1], 0.8, 0)
     
-    
-    
 filterPlaceholder = list(map(filterImage, imgList))
 interestRegion = list(map(regionofInterest, filterPlaceholder))
 cannyImage = list(map(canny, interestRegion))
 houghImage = list(map(linedetect, cannyImage))
 finalImage = list(map(overlayImage, zip(houghImage, imgList)))
-displayImage(finalImage)
+
 
