@@ -115,7 +115,7 @@ def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
     return line_img
 
 def linedetect(img):
-    return hough_lines(img, 1, np.pi/180, 10, 20, 100)
+    return hough_lines(img, 1, np.pi/180, 5, 20, 100) # Changed the number of intersections required from 10 to 5
 
 def overlayImage(setInput):
     image = list(setInput)
@@ -129,3 +129,4 @@ cannyImage = list(map(canny, interestRegion))
 houghImage = list(map(linedetect, cannyImage))
 finalImage = list(map(overlayImage, zip(houghImage, imgList)))
 displayImage(finalImage)
+
