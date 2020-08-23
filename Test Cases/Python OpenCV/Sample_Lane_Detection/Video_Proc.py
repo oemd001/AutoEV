@@ -50,7 +50,7 @@ def regionofInterest(image):
         ignoreMaskColor = 255 * channelCount
     cv.fillPoly(mask, np.int32([shape]), ignoreMaskColor)
     result = cv.bitwise_and(image, mask)
-    return result
+    #return result
 
 # self explanatory. Converts RGB to grayscale. 
 def grayscale(image):
@@ -126,10 +126,12 @@ def imageProcess(image):
     cannyImage = canny(imageInterest)
     imageLine = hough_lines(cannyImage, 1, np.pi/180, 5, 20, 5)
     result = cv.addWeighted(imageLine, 1, image, 0.8, 0)
-    return result
-
-videoOutput = "Video_Output/challenge.mp4"
-videoFile = VideoFileClip("Test_Videos/challenge.mp4")
+    return imageInterest
+"""
+videoOutput = "Video_Output/vid1.mp4"
+videoFile = VideoFileClip("Test_Videos/vid1.mp4")
 pclip1 = videoFile.fl_image(imageProcess) #NOTE: this function expects color images!!
 pclip1.write_videofile(videoOutput, audio=False)
+"""
 
+# find the vales for x and y. May need to manually modify those values to better include region of interest. 
