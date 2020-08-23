@@ -126,5 +126,6 @@ interestRegion = list(map(regionofInterest, filterPlaceholder))
 cannyImage = list(map(canny, interestRegion))
 houghImage = list(map(linedetect, cannyImage))
 finalImage = list(map(overlayImage, zip(houghImage, imgList)))
+displayImage(finalImage)
 
 

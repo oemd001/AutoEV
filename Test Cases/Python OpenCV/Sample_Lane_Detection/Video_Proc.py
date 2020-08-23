@@ -114,22 +114,22 @@ def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
     return line_img
 
 def linedetect(img):
-    return hough_lines(img, 1, np.pi/180, 5, 20, 100) # Changed the number of intersections required from 10 to 5
+    return hough_lines(img, 1, np.pi/180, 10, 20, 100) # Changed the number of intersections required from 10 to 5
 
 def overlayImage(setInput):
     image = list(setInput)
     return cv.addWeighted(image[0], 1, image[1], 0.8, 0)
 
 def imageProcess(image):
-    imageInterest = regionofInterest(image)
     imageFilter = filterImage(image)
-    cannyImage = canny(image)
-    imageLine = hough_lines(cannyImage, 1, np.pi/180, 10, 20, 5)
+    imageInterest = regionofInterest(imageFilter)
+    cannyImage = canny(imageInterest)
+    imageLine = hough_lines(cannyImage, 1, np.pi/180, 5, 20, 5)
     result = cv.addWeighted(imageLine, 1, image, 0.8, 0)
     return result
 
-videoOutput = "Video_Output/solidYellowLeft.mp4"
-videoFile = VideoFileClip("Test_Videos/solidYellowLeft.mp4")
+videoOutput = "Video_Output/challenge.mp4"
+videoFile = VideoFileClip("Test_Videos/challenge.mp4")
 pclip1 = videoFile.fl_image(imageProcess) #NOTE: this function expects color images!!
 pclip1.write_videofile(videoOutput, audio=False)
 
