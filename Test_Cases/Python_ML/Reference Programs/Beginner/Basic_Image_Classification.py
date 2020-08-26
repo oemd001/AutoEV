@@ -52,8 +52,14 @@ for i in range(25):
     plt.xlabel(class_names[train_labels[i]])
 plt.show()
 """
-               
 
+# keras.layer.Flatter basically 'flattens' the image from (for example, 1920 x 1080) to a 28 x 28 frame.
+# keras.layer.Dense. No good way to explain this. Each input node is connected to each output node. 
+model1 = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),
+    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dense(10)
+    ])
 
 
 
