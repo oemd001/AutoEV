@@ -61,6 +61,14 @@ model1 = keras.Sequential([
     keras.layers.Dense(10)
     ])
 
+# losses = cost. Lower, the better.
+# accuracy, we are looking for 95% accuracy. 
+model1.compile(optimizer='adam',
+              loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True),
+              metrics=(['accuracy']))
+
+# 'fit' method bascially trains the given model on a set number of 'epochs' (interations)
+model1.fit(train_images, train_labels, epochs = 10)
 
 
 
@@ -83,4 +91,30 @@ model1 = keras.Sequential([
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+              
 
