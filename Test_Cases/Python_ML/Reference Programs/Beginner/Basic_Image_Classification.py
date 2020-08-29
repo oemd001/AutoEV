@@ -70,7 +70,9 @@ model1.compile(optimizer='adam',
 # 'fit' method bascially trains the given model on a set number of 'epochs' (interations)
 model1.fit(train_images, train_labels, epochs = 10)
 
-
+# This function basically prints the accuracy of the given data
+test_loss, test_acc = model1.evaluate(test_images, test_labels, verbose = 2)
+print("\n Accuracy : ", test_acc)
 
 
 
