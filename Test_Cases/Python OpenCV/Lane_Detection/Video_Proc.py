@@ -140,12 +140,13 @@ def showVideo():
     else:
         rval = False
     while rval:
-        cv.imshow("test", frame)
+        cv.imshow("test", filterImage(VideoCapture))
         rval, frame = videoCapture.read()
         key = cv.waitKey(20)
         if key == 27: # aka escape key
             break
     cv.destroyWindow("test")
-
+    
+### --- No Method Declaration beyond here --- ###
 showVideo()
 # find the vales for x and y. May need to manually modify those values to better include region of interest. 
