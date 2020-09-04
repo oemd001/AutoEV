@@ -15,7 +15,8 @@ for i in range(len(imgFiles)):
     imgList.append(mpimg.imread(imgDir + imgFiles[i])) # mpimg is part of matplotlib
 
 # Adding webcam test program
-
+cv.namedWindow("test")
+videoCapture = cv.VideoCapture(0)
 
 # Run this method to test whether the program actually detects the given images. 
 def displayImage(images, cmap = None):
@@ -129,19 +130,18 @@ def imageProcess(image):
     cannyImage = canny(imageInterest)
     imageLine = hough_lines(cannyImage, 1, np.pi/180, 5, 20, 5)
     result = cv.addWeighted(imageLine, 1, image, 0.8, 0)
-    return imageInterest
+    return imageFilter
 
 def showVideo():
-    cv.namedWindow("test")
-    videoCapture = cv.VideoCapture(0)
-
     if videoCapture.isOpened():
         rval, frame = videoCapture.read() # attempts to read the first frame
     else:
         rval = False
     while rval:
-        cv.imshow("test", filterImage(VideoCapture)) # <--- PROBLEM HERE! FIX!
         rval, frame = videoCapture.read()
+        imageFilter = filterImage(frame)
+        finalImage = canny(imageFilter)
+        cv.imshow("test", finalImage) 
         key = cv.waitKey(20)
         if key == 27: # aka escape key
             break
