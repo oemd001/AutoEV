@@ -14,6 +14,9 @@ imgList = []
 for i in range(len(imgFiles)):
     imgList.append(mpimg.imread(imgDir + imgFiles[i])) # mpimg is part of matplotlib
 
+# Adding webcam test program
+
+
 # Run this method to test whether the program actually detects the given images. 
 def displayImage(images, cmap = None):
     plt.figure(figsize=(40, 40))
@@ -127,11 +130,22 @@ def imageProcess(image):
     imageLine = hough_lines(cannyImage, 1, np.pi/180, 5, 20, 5)
     result = cv.addWeighted(imageLine, 1, image, 0.8, 0)
     return imageInterest
-"""
-videoOutput = "Video_Output/vid1.mp4"
-videoFile = VideoFileClip("Test_Videos/vid1.mp4")
-pclip1 = videoFile.fl_image(imageProcess) #NOTE: this function expects color images!!
-pclip1.write_videofile(videoOutput, audio=False)
-"""
 
+def showVideo():
+    cv.namedWindow("test")
+    videoCapture = cv.VideoCapture(0)
+
+    if videoCapture.isOpened():
+        rval, frame = videoCapture.read() # attempts to read the first frame
+    else:
+        rval = False
+    while rval:
+        cv.imshow("test", frame)
+        rval, frame = videoCapture.read()
+        key = cv.waitKey(20)
+        if key == 27: # aka escape key
+            break
+    cv.destroyWindow("test")
+
+showVideo()
 # find the vales for x and y. May need to manually modify those values to better include region of interest. 
