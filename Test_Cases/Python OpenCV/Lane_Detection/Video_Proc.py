@@ -140,7 +140,7 @@ def showVideo():
     else:
         rval = False
     while rval:
-        cv.imshow("test", filterImage(VideoCapture))
+        cv.imshow("test", filterImage(VideoCapture)) # <--- PROBLEM HERE! FIX!
         rval, frame = videoCapture.read()
         key = cv.waitKey(20)
         if key == 27: # aka escape key
