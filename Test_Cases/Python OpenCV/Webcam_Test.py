@@ -4,6 +4,9 @@ import os
 import cv2 as cv
 
 cv.namedWindow("test")
+
+# VideoCapture(0) will use iPhone camera.
+# VideoCapture(1) will use built in iSight camera.
 videoCapture = cv.VideoCapture(0)
 
 if videoCapture.isOpened():
