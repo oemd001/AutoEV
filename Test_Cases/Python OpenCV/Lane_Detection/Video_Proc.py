@@ -3,7 +3,7 @@ import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from moviepy.video.io.VideoFileClip import VideoFileClip
 import numpy as np
-import moviepy
+import time
 import sys
 import os
 
@@ -17,6 +17,7 @@ for i in range(len(imgFiles)):
 # Adding webcam test program
 cv.namedWindow("test")
 videoCapture = cv.VideoCapture(0)
+time.sleep(2)
 
 # Run this method to test whether the program actually detects the given images. 
 def displayImage(images, cmap = None):
@@ -54,7 +55,7 @@ def regionofInterest(image):
         ignoreMaskColor = 255 * channelCount
     cv.fillPoly(mask, np.int32([shape]), ignoreMaskColor)
     result = cv.bitwise_and(image, mask)
-    #return result
+    return result
 
 # self explanatory. Converts RGB to grayscale. 
 def grayscale(image):
@@ -139,8 +140,7 @@ def showVideo():
         rval = False
     while rval:
         rval, frame = videoCapture.read()
-        imageFilter = filterImage(frame)
-        finalImage = canny(imageFilter)
+        finalImage = regionofInterest(frame)
         cv.imshow("test", finalImage) 
         key = cv.waitKey(20)
         if key == 27: # aka escape key
