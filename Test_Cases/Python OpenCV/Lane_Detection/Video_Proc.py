@@ -131,7 +131,7 @@ def imageProcess(image):
     cannyImage = canny(imageInterest)
     imageLine = hough_lines(cannyImage, 1, np.pi/180, 5, 20, 5)
     result = cv.addWeighted(imageLine, 1, image, 0.8, 0)
-    return imageFilter
+    return result
 
 def showVideo():
     if videoCapture.isOpened():
@@ -140,7 +140,7 @@ def showVideo():
         rval = False
     while rval:
         rval, frame = videoCapture.read()
-        finalImage = regionofInterest(frame)
+        finalImage = imageProcess(frame)
         cv.imshow("test", finalImage) 
         key = cv.waitKey(20)
         if key == 27: # aka escape key
